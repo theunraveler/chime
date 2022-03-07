@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if meetings %}
+        <ul class="list-group mb-3">
+            {% for meeting in meetings %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ meeting }}
+                    <div class="actions">
+                        <a class="btn btn-primary" href="{{ url_for('meeting', room_id=meeting) }}">
+                            <i class="bi bi-camera-video-fill"></i>
+                            Join
+                        </a>
+                        <a class="btn btn-danger" href="{{ url_for('delete_meeting', room_id=meeting) }}">
+                            <i class="bi bi-trash-fill"></i>
+                            Delete
+                        </a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('create_meeting') }}">
+        <button class="btn btn-primary" type="submit">
+            <i class="bi bi-plus-circle-fill"></i>
+            Create Meeting
+        </button>
+    </form>
+{% endblock %}

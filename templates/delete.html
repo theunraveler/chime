@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Delete Meeting {{ room_id }}</h1>
+    <p class="lead">Are you sure?</p>
+
+    <form method="POST" action="{{ url_for('delete_meeting', room_id=room_id) }}">
+        <button class="btn btn-danger" type="submit">
+            <i class="bi bi-trash-fill"></i>
+            Delete
+        </button>
+        <a href="{{ url_for('index') }}">Cancel</a>
+    </form>
+{% endblock %}
