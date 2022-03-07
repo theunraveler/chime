@@ -44,11 +44,8 @@ def meeting(room_id):
     })
 
 
-@app.route('/meetings/<room_id>/delete', methods=['GET', 'POST'])
+@app.route('/meetings/<room_id>/delete', methods=['POST'])
 def delete_meeting(room_id):
-    if flask.request.method == 'GET':
-        return flask.render_template('delete.html', room_id=room_id)
-
     with _db() as db:
         meeting_id = db[room_id]
         chime.delete_meeting(MeetingId=meeting_id.decode())

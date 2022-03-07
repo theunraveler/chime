@@ -11,10 +11,12 @@
                             <i class="bi bi-camera-video-fill"></i>
                             Join
                         </a>
-                        <a class="btn btn-danger" href="{{ url_for('delete_meeting', room_id=meeting) }}">
-                            <i class="bi bi-trash-fill"></i>
-                            Delete
-                        </a>
+                        <form class="d-inline" action="{{ url_for('delete_meeting', room_id=meeting) }}" method="POST">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash-fill"></i>
+                                Delete
+                            </button>
+                        </form>
                     </div>
                 </li>
             {% endfor %}
