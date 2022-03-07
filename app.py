@@ -13,7 +13,7 @@ current_dir = os.path.dirname(os.path.realpath(__file__))
 app.secret_key = '8611035ab47b897ebd329eb7e34a4099b3e0b2a3a1cf8201d14de495b92715a3'
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
     with _db() as db:
         meetings = [room_id.decode() for room_id in db.keys()]
